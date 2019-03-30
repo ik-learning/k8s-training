@@ -1,3 +1,15 @@
+secrets/* filter=git-crypt diff=git-crypt
+
+# For the following file types, normalize line endings to LF on checking and
+# prevent conversion to CRLF when they are checked out (this is required in
+# order to prevent newline related issues)
+.*      text eol=lf
+*.go    text eol=lf
+*.yml   text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
 # Ensure shell script uses LF, coz Git will convert files to CRLF on Windows which means the Linux container will fail to build\run
 Dockerfile  eol=lf
 *.sh        eol=lf

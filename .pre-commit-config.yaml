@@ -3,7 +3,7 @@ repos:
   rev: v2.1.0
   hooks:
   - id: check-added-large-files
-    args: ['--maxkb=500']
+    args: ['--maxkb=600']
   - id: check-executables-have-shebangs
   - id: check-yaml
     args: ['--allow-multiple-documents']

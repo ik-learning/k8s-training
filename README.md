@@ -1,2 +1,2 @@
-# Kubernetes training materials
+# Kubernetes trainings
 
