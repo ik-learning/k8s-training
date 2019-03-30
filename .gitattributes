@@ -1,0 +1,3 @@
+# Ensure shell script uses LF, coz Git will convert files to CRLF on Windows which means the Linux container will fail to build\run
+Dockerfile  eol=lf
+*.sh        eol=lf

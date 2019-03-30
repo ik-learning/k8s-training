@@ -1,0 +1,28 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.1.0
+  hooks:
+  - id: check-added-large-files
+    args: ['--maxkb=500']
+  - id: check-executables-have-shebangs
+  - id: check-yaml
+    args: ['--allow-multiple-documents']
+  - id: detect-aws-credentials
+    args: ['--allow-missing-credentials']
+  - id: pretty-format-json
+    args: ['--autofix', '--no-sort-keys', '--indent=4']
+  - id: check-json
+  - id: check-byte-order-marker
+  - id: check-case-conflict
+  - id: check-executables-have-shebangs
+  - id: check-merge-conflict
+- repo: git://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.11.0
+  hooks:
+  - id: terraform_fmt
+  - id: terraform_validate_no_variables
+  - id: terraform_docs
+- repo: git://github.com/smian/pre-commit-makefile
+  rev: 261f8fb4b31dfdc05d1a1d7fbde1f1462ecde66d
+  hooks:
+  - id: makefile-doc
