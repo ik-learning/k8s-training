@@ -1,0 +1,149 @@
+# -*- mode: ruby -*-
+# # vi: set ft=ruby :
+ENV['VAGRANT_NO_PARALLEL'] = 'yes'
+VAGRANTFILE_API_VERSION = "2"
+
+BOX_GENERIC="generic/ubuntu1804"
+vagrant_root = File.dirname(__FILE__)
+
+number_of_master_nodes = 1
+number_of_worker_nodes = 2
+ip_range               = '10.11.0'
+pod_network_cidr       = '10.12.0.0/16'
+service_cidr           = '10.13.0.0/16'
+dns_domain             = 'local'
+netmask                = '255.255.255.0'
+box                    ='generic/ubuntu1804'
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = box
+  config.vm.box_check_update = false
+  config.ssh.forward_agent = true
+
+  if Vagrant.has_plugin?('vagrant-cachier')
+    config.cache.scope = :box
+  end
+
+  if Vagrant.has_plugin? 'vagrant-hostmanager'
+    config.hostmanager.enabled = true
+  else
+    msg = "vagrant-hostmanager missing, please install the plugin with this command:"
+    msg << "\nvagrant plugin install vagrant-hostmanager"
+    fail_with_message(msg)
+  end
+
+  config.vm.provider 'virtualbox' do |vb|
+    vb.linked_clone = true
+    vb.cpus = 1
+  end
+
+  (1..number_of_master_nodes).each do |n|
+    type = "master"
+    name = "#{type}-#{n}"
+    fqdn = "#{name}.#{dns_domain}"
+    ip = "#{ip_range}.10#{n}"
+
+    config.vm.define name do |cfg|
+      cfg.vm.provider 'virtualbox' do |vb|
+        vb.memory = 1024
+        vb.gui = false
+        vb.linked_clone = true
+        vb.name = name
+      end
+      cfg.vm.hostname = fqdn
+      cfg.hostmanager.manage_host = true
+      cfg.hostmanager.manage_guest = true
+      cfg.hostmanager.aliases = fqdn
+      cfg.vm.network "private_network", ip: ip, netmask: netmask
+        # auto_config: true,
+        # virtualbox__intnet: "k8s-net"
+      cfg.vm.synced_folder "#{vagrant_root}/#{type}", "/data/", owner: "vagrant", group: "vagrant"
+      cfg.vm.post_up_message = post_up_message("Master", name)
+      config.vm.provision "shell", inline: <<-SHELL
+        set -ex
+        echo "Updating Master node..."
+        echo "cd /data" >> /home/vagrant/.bashrc
+      SHELL
+    end
+  end
+
+  (1..number_of_worker_nodes).each do |n|
+    type = "worker"
+    name = "#{type}-#{n}"
+    fqdn = "#{name}.#{dns_domain}"
+    ip = "#{ip_range}.11#{n}"
+
+    config.vm.define name do |cfg|
+      cfg.vm.provider 'virtualbox' do |vb|
+        vb.memory = 1024
+        vb.gui = false
+        vb.linked_clone = true
+        vb.name = name
+      end
+      cfg.vm.hostname = fqdn
+      cfg.hostmanager.manage_host = true
+      cfg.hostmanager.aliases = fqdn
+      cfg.vm.network "private_network", ip: ip, netmask: netmask
+      cfg.vm.synced_folder "#{vagrant_root}/#{type}", "/data/", owner: "vagrant", group: "vagrant"
+      cfg.vm.post_up_message = post_up_message("Worker #{n}", name)
+      config.vm.provision "shell", inline: <<-SHELL
+        set -ex
+        echo "Updating Worker node..."
+        echo "cd /data" >> /home/vagrant/.bashrc
+      SHELL
+    end
+  end
+
+end
+
+def post_up_message(node_name, node_id)
+  msg = "Kubernetes #{node_name} is ready to use!"
+  msg << "\n - You can SSH into the machine with `BOX_NAME=#{node_id} make box_ssh`."
+  msg
+end
+
+def fail_with_message(msg)
+  fail Vagrant::Errors::VagrantError.new, msg
+end
+
+# vagrant ssh
+# some.vm.provision :shell, :path => "bootstrap.sh"
+# current_dir    = File.dirname(File.expand_path(__FILE__))
+#
+#  config.vm.provision :shell, inline: <<-EOF
+#     sudo apt-get install -y git openjdk-7-jdk ruby rubygems vim-nox unzip maven
+#     sudo -u vagrant -H sh -c 'cd ~vagrant; git clone https://github.com/junegunn/dotfiles.git; dotfiles/install'
+#     sudo -u vagrant -H sh -c 'cd ~vagrant; git clone https://github.com/junegunn/vimfiles.git; vimfiles/install'
+#     cat /etc/hosts | sed 's/127.0.1.1/127.0.0.1/g' > /tmp/etc-hosts
+#     mv /tmp/etc-hosts /etc/hosts
+#   EOF
+
+#   config.vm.provider :virtualbox do |vb|
+#     vb.customize ["modifyvm", :id, "--memory", 6 * 1024]
+#     vb.customize ["modifyvm", :id, "--cpus", 4]
+#   end
+
+
+  # (1..1).each do |i|
+  # 	config.vm.define "k8s#{i}" do |cfg|
+  # 		cfg.ssh.forward_agent = true
+  # 		# cfg.vm.box = BOX
+  # 		cfg.vm.hostname = "k8s#{i}"
+  # 		cfg.vm.box_check_update = false
+  # 		cfg.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
+  # 		if i == 1
+  # 			# cfg.vm.provision :shell, inline: "PYTHONUNBUFFERED=1 ansible-playbook /vagrant/ansible/k8s-master.yml -c local"
+  # 		else
+  # 			# cfg.vm.provision :shell, inline: "PYTHONUNBUFFERED=1 ansible-playbook /vagrant/ansible/k8s-worker.yml -c local"
+  # 		end
+  # 		cfg.vm.network "private_network", ip: "172.42.42.#{i}", netmask: "255.255.255.0",
+  # 			auto_config: true,
+  # 			virtualbox__intnet: "k8s-net"
+  # 		cfg.vm.provider "virtualbox" do |vb|
+  # 			vb.linked_clone = true
+  # 			vb.name = "k8s#{i}"
+  # 			vb.memory = 1048
+  # 			vb.gui = false
+  # 		end
+  # 	end
+  # end
