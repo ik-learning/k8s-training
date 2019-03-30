@@ -284,7 +284,23 @@ override.tf.json
 # example: *tfplan*
 
 ### Testinfra ###
-
 # End of https://www.gitignore.io/api/go,java,python,jetbrains,testinfra,terraform
+
+# Created by https://www.gitignore.io/api/vagrant
+# Edit at https://www.gitignore.io/?templates=vagrant
+
+### Vagrant ###
+# General
+.vagrant/
+
+# Log files (if you are creating logs in debug mode, uncomment this)
+# *.logs
+
+### Vagrant Patch ###
+*.box
+
+# End of https://www.gitignore.io/api/vagrant
+
+
 
 GeneralDocs.pdf
