@@ -1,0 +1,21 @@
+
+> Get minikube nodes
+kubectl get nodes
+
+> Docker Daemon
+docker ps
+
+> Dashboard
+minikube dashboard
+
+> Cluster into
+kubectl cluster-info
+
+> Minikube Docker image
+eval $(minikube docker-env)
+
+
+kubectl get pods -n istio-system
+
+
+eval $(minikube docker-env)

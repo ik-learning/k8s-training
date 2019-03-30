@@ -286,3 +286,5 @@ override.tf.json
 ### Testinfra ###
 
 # End of https://www.gitignore.io/api/go,java,python,jetbrains,testinfra,terraform
+
+GeneralDocs.pdf
