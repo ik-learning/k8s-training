@@ -300,7 +300,7 @@ override.tf.json
 *.box
 temp/*
 # End of https://www.gitignore.io/api/vagrant
-
+**/.debug-*
 
 
 GeneralDocs.pdf
