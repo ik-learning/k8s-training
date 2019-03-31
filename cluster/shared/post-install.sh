@@ -53,9 +53,11 @@ kubeadm token list > /vagrant/kubeadm-tokens
 kubectl -n kube-system get secret > /vagrant/secrets
 kubectl get svc > /vagrant/services
 
-# Install heapster
-kubectl apply -f /shared/heapster.yml
+# Install heapster. TODO: change namespace to monitoring
+kubectl apply -f /shared/heapster.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
+
+$SHELL -c 'while [ -z "$(kubectl get nodes --all-namespaces | grep -E "\s+Ready\s+")" ]; do sleep 3; done'
 # install tiller server prereq
 kubectl create serviceaccount -n kube-system tiller
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller

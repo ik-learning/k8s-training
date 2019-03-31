@@ -12,6 +12,9 @@ service_cidr=$3
 service_dns_domain=$4
 node_number=$5
 
+echo "Pull system apps for Kubernetes"
+kubeadm config images pull
+
 # initialize kubernetes.
 KUBEADM_INIT=$(kubeadm init \
     --apiserver-advertise-address=$apiserver_advertise_address \

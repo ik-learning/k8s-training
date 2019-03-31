@@ -61,8 +61,6 @@ EOF
 
 systemctl daemon-reload
 systemctl restart kubelet
-echo "Pull system apps for Kubernetes"
-kubeadm config images pull
 
 echo "========================="
 echo "== TOOLS PROVISION END =="
