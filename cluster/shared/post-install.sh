@@ -53,6 +53,12 @@ kubeadm token list > /vagrant/kubeadm-tokens
 kubectl -n kube-system get secret > /vagrant/secrets
 kubectl get svc > /vagrant/services
 
+# Install heapster
+kubectl apply -f /shared/heapster.yml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
+# install tiller server prereq
+kubectl create serviceaccount -n kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 echo "=============================="
 echo "== CLUSTER POST INSTALL END =="
 echo "=============================="

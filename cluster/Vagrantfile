@@ -64,6 +64,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # virtualbox__intnet: "k8s-net"
       cfg.vm.synced_folder "#{vagrant_root}/#{type}", "/data/", owner: "vagrant", group: "vagrant"
       cfg.vm.synced_folder "#{vagrant_root}/temp", "/vagrant/", owner: "vagrant", group: "vagrant"
+      cfg.vm.synced_folder "#{vagrant_root}/shared", "/shared/", owner: "vagrant", group: "vagrant"
       cfg.vm.post_up_message = post_up_message("Master", name)
       cfg.vm.provision 'shell', path: 'shared/base.sh', privileged: true, args: ["#{type}", n]
       cfg.vm.provision 'shell', path: 'shared/docker.sh', privileged: true, args: ["#{type}", n]
@@ -71,6 +72,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           args: ["#{type}", n, ip, kube_version, kube_cni_version]
       cfg.vm.provision 'shell', path: "shared/#{type}.sh", privileged: true,
           args: [ip, pod_network_cidr, service_cidr, service_dns_domain, n]
+      cfg.vm.provision 'shell', path: "shared/post-install.sh"
       cfg.vm.provision "shell", inline: <<-SHELL
         set -e
         echo "Updating Master node..."
@@ -98,6 +100,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       cfg.vm.network "private_network", ip: ip, netmask: netmask
       cfg.vm.synced_folder "#{vagrant_root}/#{type}", "/data/", owner: "vagrant", group: "vagrant"
       cfg.vm.synced_folder "#{vagrant_root}/temp", "/vagrant/", owner: "vagrant", group: "vagrant"
+      cfg.vm.synced_folder "#{vagrant_root}/shared", "/shared/", owner: "vagrant", group: "vagrant"
       cfg.vm.post_up_message = post_up_message("Worker #{n}", name)
       cfg.vm.provision 'shell', path: 'shared/base.sh', privileged: true, args: ["#{type}", n]
       cfg.vm.provision 'shell', path: 'shared/docker.sh', privileged: true, args: ["#{type}", n]
@@ -111,10 +114,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         echo "cd /vagrant" >> /home/vagrant/.bashrc
       SHELL
       # Run post install script only if last Worker
-      isLastBox = n == number_of_worker_nodes
-      if isLastBox
-        cfg.vm.provision 'shell', path: "shared/post-install.sh"
-      end
+      # isLastBox = n == number_of_worker_nodes
+      # if isLastBox
+      #   cfg.vm.provision 'shell', path: "shared/post-install.sh"
+      # end
     end
   end
 
