@@ -35,27 +35,30 @@ vagrant-setup: ## Prepare vagrant setup
 	@vagrant plugin install vagrant-cachier
 	@vagrant plugin list
 
-k8s-start: ## Start kubernetes cluster (Vagrant)
+#################
+# Vagrant Boxes #
+#################
+box-start: ## Start kubernetes cluster (Vagrant)
 	@echo "Deploy cluster with vagrant ${VAGRANT_CWD}"
 	@vagrant up
 
-k8s-stop: ## Stop kubernetes cluster (Vagrant)
+box-stop: ## Stop kubernetes cluster (Vagrant)
 	@echo "Stop cluster with vagrant ${VAGRANT_CWD}"
 	@vagrant stop
 
-k8s-destroy: ## Destroy kubernetes cluster (Vagrant)
+box-destroy: ## Destroy kubernetes cluster (Vagrant)
 	@echo "Destroy cluster with vagrant ${VAGRANT_CWD}"
 	@vagrant destroy --force --parallel
 
-vagrant-cache: ## Remove Vagrant cache
-	@echo "Destroy cluster with vagrant ${VAGRANT_CWD}"
-	@rm -rf $HOME/.vagrant.d/cache/
-	@rm -rf .vagrant/machines/
+box-provision: ## Provision boxes
+	@echo "Provision boxes"
+	@vagrant provision
 
 box-ssh: ## SSH to Vagrant box. BOX_NAME=master-1 make box-ssh
 	@echo "SSH onto ${BOX_NAME}"
 	@vagrant ssh ${BOX_NAME}
 
-box-provision: ## Provision boxes
-	@echo "Provision boxes"
-	@vagrant provision
+box-cache: ## Remove Vagrant cache
+	@echo "Destroy cluster with vagrant ${VAGRANT_CWD}"
+	@rm -rf $HOME/.vagrant.d/cache/
+	@rm -rf .vagrant/machines/

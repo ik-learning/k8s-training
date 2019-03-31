@@ -13,7 +13,7 @@ DOCKER_VERSION=$(docker version)
 DOCKER_NETWORK=$(docker network ls)
 SUSMTEM_CTL=$(sysctl --system)
 
-cat>/data/.debug-${node_role}-${node_number}<<EOF
+cat>/data/.debug-docker-${node_role}-${node_number}<<EOF
 IP:
 ${IP_LINK}
 
@@ -66,6 +66,8 @@ systemctl start docker
 
 # configure containerd.
 # see https://kubernetes.io/docs/setup/cri/
+# modprobe overlay
+# modprobe br_netfilter
 cat >/etc/sysctl.d/99-kubernetes-cri.conf <<'EOF'
 net.ipv4.ip_forward                 = 1
 net.bridge.bridge-nf-call-iptables  = 1

@@ -8,12 +8,12 @@ $ make help
 install                        Install dev dependencies
 validate                       Validate multiple files
 vagrant-setup                  Prepare vagrant setup
-k8s-start                      Start kubernetes cluster (Vagrant)
-k8s-stop                       Stop kubernetes cluster (Vagrant)
-k8s-destroy                    Destroy kubernetes cluster (Vagrant)
-vagrant-cache                  Remove Vagrant cache
+box-start                      Start kubernetes cluster (Vagrant)
+box-stop                       Stop kubernetes cluster (Vagrant)
+box-destroy                    Destroy kubernetes cluster (Vagrant)
+box-provision                  Provision boxes
 box-ssh                        SSH to Vagrant box. BOX_NAME=master-1 make box-ssh
-box-provision                  Provision boxes 
+box-cache                      Remove Vagrant cache 
 ```
 <!-- END makefile-doc -->
 
@@ -21,3 +21,4 @@ box-provision                  Provision boxes
 
 [Vagrant K8s Lab](https://github.com/xbernpa/vagrant-kubernetes-lab)
 [Vagrang Kubo](https://github.com/rgl/kubernetes-ubuntu-vagrant)
+[App Example](https://github.com/ik-learning/vagrant-ubuntu-k8s/tree/master/examples/client/go)
