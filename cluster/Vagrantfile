@@ -62,10 +62,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       cfg.vm.network "private_network", ip: ip, netmask: netmask
         # auto_config: true,
         # virtualbox__intnet: "k8s-net"
-      cfg.vm.synced_folder "#{vagrant_root}/#{type}", "/data/", owner: "vagrant", group: "vagrant"
+			cfg.vm.synced_folder "#{vagrant_root}/#{type}", "/data/", owner: "vagrant", group: "vagrant"
+			cfg.vm.synced_folder "#{vagrant_root}/temp", "/vagrant/", owner: "vagrant", group: "vagrant"
       cfg.vm.post_up_message = post_up_message("Master", name)
-			config.vm.provision 'shell', path: 'shared/base.sh', privileged: true, args: ["#{type}", n]
-			config.vm.provision 'shell', path: 'shared/docker.sh', privileged: true, args: ["#{type}", n]
+			cfg.vm.provision 'shell', path: 'shared/base.sh', privileged: true, args: ["#{type}", n]
+			cfg.vm.provision 'shell', path: 'shared/docker.sh', privileged: true, args: ["#{type}", n]
 			cfg.vm.provision 'shell', path: 'shared/tools.sh', privileged: true,
 				args: ["#{type}", n, ip, kube_version, kube_cni_version]
 			config.vm.provision 'shell', path: "shared/#{type}.sh", privileged: true,

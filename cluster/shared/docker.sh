@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+echo "============================"
+echo "== DOCKER PROVISION START =="
+echo "============================"
+
 node_role="$1"
 node_number="$2"
 
@@ -85,3 +89,7 @@ echo "Test containers"
 docker run --rm hello-world
 docker run --rm alpine cat /etc/resolv.conf
 docker run --rm alpine ping -c1 8.8.8.8
+
+echo "=========================="
+echo "== DOCKER PROVISION END =="
+echo "=========================="

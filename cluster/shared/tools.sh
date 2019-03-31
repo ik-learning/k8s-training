@@ -8,6 +8,10 @@ node_ip=$3
 kube_version=$4
 kube_cni_version=$5
 
+echo "========================"
+echo "== DOCKER TOOLS START =="
+echo "========================"
+
 on_exit() {
 KUBELET_SERVICE=$(systemctl cat kubelet.service)
 KUBELET_VERSION=$(kubelet --version)
@@ -60,3 +64,7 @@ systemctl daemon-reload
 systemctl restart kubelet
 echo "Pull correct images for Kubernetes"
 kubeadm config images pull
+
+echo "========================"
+echo "== DOCKER TOOLS END   =="
+echo "========================"
