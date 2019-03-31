@@ -1,6 +1,6 @@
 secrets/* filter=git-crypt diff=git-crypt
-./cluster/temp/kubeadm-join.sh filter=git-crypt diff=git-crypt
-./cluster/temp/admin.conf filter=git-crypt diff=git-crypt
+**/kubeadm-join.sh filter=git-crypt diff=git-crypt
+**/admin.conf filter=git-crypt diff=git-crypt
 
 # For the following file types, normalize line endings to LF on checking and
 # prevent conversion to CRLF when they are checked out (this is required in

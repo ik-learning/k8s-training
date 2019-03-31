@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -euox pipefail
 
 echo "================================"
 echo "== CLUSTER POST INSTALL START =="
