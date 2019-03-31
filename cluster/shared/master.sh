@@ -46,7 +46,7 @@ ${IP_ROUTE}
 EOF
 }
 trap on_exit EXIT
-
+# --node-name ${node_name}
 kubeadm token create --print-join-command > /vagrant/kubeadm-join.sh
 
 # configure kubectl in the root and vagrant accounts with kubernetes superuser privileges.
@@ -79,5 +79,3 @@ $SHELL -c 'while [ -z "$(kubectl get nodes | grep -E "\s+Ready\s+")" ]; do sleep
 echo "==============================="
 echo "== MASTER NODE PROVISION END =="
 echo "==============================="
-
-# kubectl cluster-info dump

@@ -4,7 +4,7 @@
 
 <!-- START makefile-doc -->
 ```
-$ make help 
+$ make help
 install                        Install dev dependencies
 validate                       Validate multiple files
 vagrant-setup                  Prepare vagrant setup
@@ -13,7 +13,7 @@ box-stop                       Stop kubernetes cluster (Vagrant)
 box-destroy                    Destroy kubernetes cluster (Vagrant)
 box-provision                  Provision boxes
 box-ssh                        SSH to Vagrant box. BOX_NAME=master-1 make box-ssh
-box-cache                      Remove Vagrant cache 
+box-cache                      Remove Vagrant cache
 ```
 <!-- END makefile-doc -->
 
@@ -24,3 +24,7 @@ box-cache                      Remove Vagrant cache
 - [App Example](https://github.com/ik-learning/vagrant-ubuntu-k8s/tree/master/examples/client/go)
 - [K8s Basic](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
 <!-- TODO certificates out. Deploy stuff via worker -->
+
+## To try
+
+[Istio Dashboard](https://github.com/ik-kubernetes/naftis)

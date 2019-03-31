@@ -106,7 +106,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       cfg.vm.provision 'shell', path: 'shared/docker.sh', privileged: true, args: ["#{type}", n]
       cfg.vm.provision 'shell', path: 'shared/tools.sh', privileged: true,
         args: ["#{type}", n, ip, kube_version, kube_cni_version]
-      cfg.vm.provision 'shell', path: "shared/#{type}.sh", privileged: true
+      cfg.vm.provision 'shell', path: "shared/#{type}.sh", privileged: true, args: ["#{name}"]
       cfg.vm.provision 'shell', path: 'shared/access.sh', privileged: false
       cfg.vm.provision 'shell', inline: <<-SHELL
         set -e

@@ -1,0 +1,11 @@
+# Commands
+
+- Untain master node
+
+```
+kubectl taint nodes --all node-role.kubernetes.io/master-
+```
+
+```
+ kubectl get nodes
+```
