@@ -11,7 +11,7 @@ number_of_worker_nodes = 2
 ip_range               = '10.11.0'
 pod_network_cidr       = '10.12.0.0/16'
 service_cidr           = '10.13.0.0/16'
-dns_domain             = 'local'
+dns_domain             = 'local' #cluster.local
 netmask                = '255.255.255.0'
 box                    ='generic/ubuntu1804'
 
@@ -59,8 +59,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # virtualbox__intnet: "k8s-net"
       cfg.vm.synced_folder "#{vagrant_root}/#{type}", "/data/", owner: "vagrant", group: "vagrant"
       cfg.vm.post_up_message = post_up_message("Master", name)
+      config.vm.provision 'shell', path: 'shared/base.sh', args: ['master', n], privileged: true
       config.vm.provision "shell", inline: <<-SHELL
-        set -ex
+        set -e
         echo "Updating Master node..."
         echo "cd /data" >> /home/vagrant/.bashrc
       SHELL
@@ -86,8 +87,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       cfg.vm.network "private_network", ip: ip, netmask: netmask
       cfg.vm.synced_folder "#{vagrant_root}/#{type}", "/data/", owner: "vagrant", group: "vagrant"
       cfg.vm.post_up_message = post_up_message("Worker #{n}", name)
+      config.vm.provision 'shell', path: 'shared/base.sh', args: ['worker', n], privileged: true
       config.vm.provision "shell", inline: <<-SHELL
-        set -ex
+        set -e
         echo "Updating Worker node..."
         echo "cd /data" >> /home/vagrant/.bashrc
       SHELL
@@ -134,7 +136,7 @@ end
   # 		if i == 1
   # 			# cfg.vm.provision :shell, inline: "PYTHONUNBUFFERED=1 ansible-playbook /vagrant/ansible/k8s-master.yml -c local"
   # 		else
-  # 			# cfg.vm.provision :shell, inline: "PYTHONUNBUFFERED=1 ansible-playbook /vagrant/ansible/k8s-worker.yml -c local"
+  # 			# cfg.vm.provision :shell, inline: "PYTHONUNBUFFERED=1 ansible-playbook /vagrant/ansible/k8s-worker.yml -c local", privileged: true
   # 		end
   # 		cfg.vm.network "private_network", ip: "172.42.42.#{i}", netmask: "255.255.255.0",
   # 			auto_config: true,

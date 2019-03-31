@@ -47,6 +47,10 @@ k8s-destroy: ## Destroy kubernetes cluster (Vagrant)
 	@echo "Destroy cluster with vagrant ${VAGRANT_CWD}"
 	@vagrant destroy --force --parallel
 
-box_ssh: ## SSH to Vagrant box. BOX_NAME=master-1 make box_ssh
+box-ssh: ## SSH to Vagrant box. BOX_NAME=master-1 make box_ssh
 	@echo "SSH onto ${BOX_NAME}"
 	@vagrant ssh ${BOX_NAME}
+
+box-provision: ## Provision boxes
+	@echo "Provision boxes"
+	@vagrant provision

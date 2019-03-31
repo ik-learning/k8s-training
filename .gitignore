@@ -298,7 +298,7 @@ override.tf.json
 
 ### Vagrant Patch ###
 *.box
-
+temp/*
 # End of https://www.gitignore.io/api/vagrant
 
 
