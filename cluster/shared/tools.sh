@@ -8,9 +8,9 @@ node_ip=$3
 kube_version=$4
 kube_cni_version=$5
 
-echo "========================"
-echo "== DOCKER TOOLS START =="
-echo "========================"
+echo "==========================="
+echo "== TOOLS PROVISION START =="
+echo "==========================="
 
 on_exit() {
 KUBELET_SERVICE=$(systemctl cat kubelet.service)
@@ -40,7 +40,6 @@ export DEBIAN_FRONTEND=noninteractive
 
 wget -qO- https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 add-apt-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
-
 apt-get update
 
 apt-get install -y kubernetes-cni=${kube_cni_version}  kubeadm=${kube_version} kubelet=${kube_version} kubectl=${kube_version}
@@ -62,9 +61,9 @@ EOF
 
 systemctl daemon-reload
 systemctl restart kubelet
-echo "Pull correct images for Kubernetes"
+echo "Pull system apps for Kubernetes"
 kubeadm config images pull
 
-echo "========================"
-echo "== DOCKER TOOLS END   =="
-echo "========================"
+echo "========================="
+echo "== TOOLS PROVISION END =="
+echo "========================="

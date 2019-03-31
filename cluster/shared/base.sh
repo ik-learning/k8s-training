@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+echo "=========================="
+echo "== BASE PROVISION START =="
+echo "=========================="
+
 node_role="$1"
 node_number="$2"
 # prevent apt-get et al from asking questions
@@ -91,3 +95,7 @@ __  _  _____________|  | __ ___________
                          \/    \/
 EOF
 fi
+
+echo "========================"
+echo "== BASE PROVISION END =="
+echo "========================"

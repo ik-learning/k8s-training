@@ -38,7 +38,7 @@ vagrant-setup: ## Prepare vagrant setup
 #################
 # Vagrant Boxes #
 #################
-box-start: ## Start kubernetes cluster (Vagrant)
+box-up: ## Start kubernetes cluster (Vagrant)
 	@echo "Deploy cluster with vagrant ${VAGRANT_CWD}"
 	@vagrant up
 
@@ -59,6 +59,6 @@ box-ssh: ## SSH to Vagrant box. BOX_NAME=master-1 make box-ssh
 	@vagrant ssh ${BOX_NAME}
 
 box-cache: ## Remove Vagrant cache
-	@echo "Destroy cluster with vagrant ${VAGRANT_CWD}"
+	@echo "Clean Vagrant cache"
 	@rm -rf $HOME/.vagrant.d/cache/
 	@rm -rf .vagrant/machines/

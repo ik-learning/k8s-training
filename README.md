@@ -8,7 +8,7 @@ $ make help
 install                        Install dev dependencies
 validate                       Validate multiple files
 vagrant-setup                  Prepare vagrant setup
-box-start                      Start kubernetes cluster (Vagrant)
+box-up                         Start kubernetes cluster (Vagrant)
 box-stop                       Stop kubernetes cluster (Vagrant)
 box-destroy                    Destroy kubernetes cluster (Vagrant)
 box-provision                  Provision boxes
@@ -19,8 +19,8 @@ box-cache                      Remove Vagrant cache
 
 ## Inspired with
 
-[Vagrant K8s Lab](https://github.com/xbernpa/vagrant-kubernetes-lab)
-[Vagrang Kubo](https://github.com/rgl/kubernetes-ubuntu-vagrant)
-[App Example](https://github.com/ik-learning/vagrant-ubuntu-k8s/tree/master/examples/client/go)
-
-<!-- TODO certificates out -->
+- [Vagrant K8s Lab](https://github.com/xbernpa/vagrant-kubernetes-lab)
+- [Vagrang Kubo](https://github.com/rgl/kubernetes-ubuntu-vagrant)
+- [App Example](https://github.com/ik-learning/vagrant-ubuntu-k8s/tree/master/examples/client/go)
+- [K8s Basic](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
+<!-- TODO certificates out. Deploy stuff via worker -->
