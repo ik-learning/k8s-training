@@ -10,14 +10,15 @@ kube_cni_version='0.7.5*'
 
 vagrant_root = File.dirname(__FILE__)
 
-number_of_master_nodes = 1
-number_of_worker_nodes = 0
-ip_range               = '10.11.0'
-pod_network_cidr       = '10.12.0.0/16'
-service_cidr           = '10.13.0.0/16'
-dns_domain             = 'cluster.local' #cluster.local
-netmask                = '255.255.255.0'
-box                    ='generic/ubuntu1804'
+number_of_master_nodes      = 1
+number_of_worker_nodes      = 0
+ip_range           = '10.11.0'
+pod_network_cidr   = '10.12.0.0/16'
+service_cidr       = '10.13.0.0/16'
+service_dns_domain = 'cluster.local'
+dns_domain         = 'cluster.vagrant'
+netmask            = '255.255.255.0'
+box                ='generic/ubuntu1804'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = box
@@ -54,10 +55,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.linked_clone = true
         vb.name = name
       end
-      cfg.vm.hostname = fqdn
+			cfg.vm.hostname = fqdn
+			cfg.hostmanager.aliases = fqdn
       cfg.hostmanager.manage_host = true
       cfg.hostmanager.manage_guest = true
-      cfg.hostmanager.aliases = fqdn
       cfg.vm.network "private_network", ip: ip, netmask: netmask
         # auto_config: true,
         # virtualbox__intnet: "k8s-net"
@@ -65,7 +66,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       cfg.vm.post_up_message = post_up_message("Master", name)
 			config.vm.provision 'shell', path: 'shared/base.sh', privileged: true, args: ["#{type}", n]
 			config.vm.provision 'shell', path: 'shared/docker.sh', privileged: true, args: ["#{type}", n]
-			cfg.vm.provision 'shell', path: 'shared/tools.sh', privileged: true, args: ["#{type}", n, ip, kube_version, kube_cni_version]
+			cfg.vm.provision 'shell', path: 'shared/tools.sh', privileged: true,
+				args: ["#{type}", n, ip, kube_version, kube_cni_version]
+			config.vm.provision 'shell', path: "shared/#{type}.sh", privileged: true,
+				args: [ip, pod_network_cidr, service_cidr, service_dns_domain, n]
       config.vm.provision "shell", inline: <<-SHELL
         set -e
         echo "Updating Master node..."

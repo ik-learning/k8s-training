@@ -77,7 +77,7 @@ sysctl --system
 containerd config default >/etc/containerd/config.toml
 sed -i -E 's,^(\s*systemd_cgroup =).*,\1 true,' /etc/containerd/config.toml
 systemctl restart containerd
-
+systemctl enable docker.service
 echo "Check if docker accessible"
 usermod -aG docker vagrant
 

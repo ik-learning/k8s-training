@@ -58,3 +58,5 @@ EOF
 
 systemctl daemon-reload
 systemctl restart kubelet
+echo "Pull correct images for Kubernetes"
+kubeadm config images pull
