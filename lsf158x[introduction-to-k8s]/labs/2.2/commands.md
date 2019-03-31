@@ -21,6 +21,36 @@ curl http://worker-1.cluster.vagrant:30905 -v
 > nginx response
  ```
 
+Composite
+```
+kubectl delete -f ./lsf158x[introduction-to-k8s]/labs/2.2/composite.yaml
+> NAME       READY   STATUS    RESTARTS   AGE
+> basicpod   2/2     Running   0          27s
+
+kubectl describe pod basicpod
+
+```
+
+## Deployment
+
+```
+kubectl create deployment firstpod --image=nginx
+kubectl get deployment,pod
+kubectl describe deployment firstpod
+kubectl describe pod <name|id>
+kubectl get namespaces
+kubectl get deploy,rs,po,svc,ep
+```
+
+
+
+
+
+
+
+
+
+
 Clean it
 ```
 kubectl delete -f ./lsf158x[introduction-to-k8s]/labs/2.2/basic.yaml

@@ -38,6 +38,15 @@ subjects:
   namespace: kube-system
 EOF
 
+#
+# wget https://tinyurl.com/yb4xturm -O rbac-kdd.yaml
+
+# wget https://tinyurl.com/y8lvqc9g  -O calico.yaml
+
+# kubectl apply -f rbac-kdd.yaml
+# kubectl delete -f rbac-kdd.yaml
+# kubectl apply -f calico.yaml
+# kubectl delete -f calico.yaml
 # save the admin token.
 kubectl \
   -n kube-system \

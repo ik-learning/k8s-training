@@ -7,5 +7,6 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 ```
 
 ```
- kubectl get nodes
+kubectl get nodes
+kubectl describe deployment firstpod
 ```
