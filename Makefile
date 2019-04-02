@@ -44,7 +44,8 @@ box-up: ## Start kubernetes cluster (Vagrant)
 
 box-stop: ## Stop kubernetes cluster (Vagrant)
 	@echo "Stop cluster with vagrant ${VAGRANT_CWD}"
-	@vagrant stop
+	@vagrant halt
+	#susptend
 
 box-destroy: ## Destroy kubernetes cluster (Vagrant)
 	@echo "Destroy cluster with vagrant ${VAGRANT_CWD}"
@@ -62,3 +63,7 @@ box-cache: ## Remove Vagrant cache
 	@echo "Clean Vagrant cache"
 	@rm -rf $HOME/.vagrant.d/cache/
 	@rm -rf .vagrant/machines/
+
+#
+k8s: ## List kubernetes setup
+	@echo "export KUBECONFIG=$(PWD)/cluster/temp/admin.conf"
