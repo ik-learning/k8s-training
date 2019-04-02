@@ -1,0 +1,24 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sleepy
+spec:
+  backoffLimit: 5
+  completions: 5
+  parallelism: 2
+  activeDeadlineSeconds: 15
+  template:
+    spec:
+      containers:
+      - name: resting
+        image: busybox
+        command: ["/bin/sleep"]
+        args: ["3"]
+      restartPolicy: Never
+
+# kubectl apply -f .kubernetes-trainings/lfd259-k8s-developer/labs/4/job.yaml
+# kubectl describe jobs.batch sleepy
+# kubectl get jobs.batch sleepy -o yaml
+# kubectl delete jobs.batch sleepy
+# kubectl get jobs.batch

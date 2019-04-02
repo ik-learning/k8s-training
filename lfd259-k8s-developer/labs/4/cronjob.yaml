@@ -1,0 +1,27 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: sleepy
+spec:
+  schedule: "*/2 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          activeDeadlineSeconds: 10
+          containers:
+          - name: resting
+            image: busybox
+            command: ["/bin/sleep"]
+            args:
+            - /bin/sh
+            - -c
+            - date; sleep 30
+          restartPolicy: Never
+
+# kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/4/cronjob.yaml
+# kubectl get cronjobs.batch
+# kubectl get job
+# kubectl get jobs.batch
+# kubectl delete cronjobs.batch sleepy

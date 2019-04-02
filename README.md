@@ -4,7 +4,7 @@
 
 <!-- START makefile-doc -->
 ```
-$ make help 
+$ make help
 install                        Install dev dependencies
 validate                       Validate multiple files
 vagrant-setup                  Prepare vagrant setup
@@ -14,7 +14,7 @@ box-destroy                    Destroy kubernetes cluster (Vagrant)
 box-provision                  Provision boxes
 box-ssh                        SSH to Vagrant box. BOX_NAME=master-1 make box-ssh
 box-cache                      Remove Vagrant cache
-k8s                            List kubernetes setup 
+k8s                            List kubernetes setup
 ```
 <!-- END makefile-doc -->
 
@@ -54,3 +54,8 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 ## Editors
 
 [Vim](https://devhints.io/vim)
+
+
+## TODO
+
+Jobs and CronJobs clariy

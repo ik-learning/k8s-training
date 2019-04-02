@@ -153,6 +153,104 @@ spec:
 				ephemeral-storage:
 ```
 
+## Multi-Container Pods
+
+The idea of multiple containers in a Pod goes ahead the architectural idea of decoupling as much as possible. One could
+run an entire operating system inside a container, but would lose much of the granular scalability Kubernetes is capable of.
+But there are certain needs in which a second or third co-located container makes sense. By adding a second container, each
+container can still be optimized and developed independently, and bot can scale and be repurposed to best meet the needs of the
+workload.
+
+## Sidecar Container
+
+The idea for a `sidecar container` is to add some functionality not present in the main container. Rather than bloading code,
+which may not be necessary in other deployments, adding a container to handle a function such as logging solves the issue,
+while remaining decoupled and scalable. Prometheus monitoring and Fluentd logging leverage sidecar containers to collect data.
+
+## Adapter Container
+
+The basic purpose of an `adapter container` is to modify data, either on ingress or egress, to match some other need. Perhaps,
+an existing enterprise-wide monitoring role tools has particular data format needs. An adapter would be an efficient way to
+standartize the output of the main container to be ingested by the monitoring tool, without having to modify the monitor or the
+containerized application. An adapter container transforms multiple applications to a single view.
+
+## Ambassador
+
+An ambassador allows for access to the outside world without having to implment a service or another entry in an ingress controller.
+
+- Proxy local connections
+- Reverse proxy
+- Limits HTTP requests
+- Re-route from the container to the outside world
+
+## Point to Ponder
+
+A few things to carefully consider:
+- Is my application decoupled as it could possible be? Is there anything that I could take out, or make its own container?
+- Is each container transient, does it expect others to be transient?
+- Can I scale any particular component to meet workload demand?
+- Have I used the most open standard stable enough to meet my needs?
+
+## Jobs
+
+Jobs are part or the `bach` API group. They are used to run a set number of pods to completion. If a pod fails, it will
+be restarted untill the number of completion reached.
+
+While they can be sees as a way to do batch processing in Kubernetes, they can also be used to run one-off pods. A `Job`
+spcecication have paralelism and a completion key. If ommited, they will be set to one. If they are present, the paralelism
+number will set the number of pods that can run concurrently, and the completion number will set how many pods need to run
+succesfully for the `Job` itself to be considered done. Several `Job` patterns can be implemented, like a traditional work queue.
+
+`CronJobs` work in a similar manner to Linux jobs, with the same time syntax. There are some cases where a job would not be run
+during a time period or could ru twice; as a result, the requested Pod should be idempotent.
+
+An option `spec` field is `.spec.concurrencyPolicy` which determines how to handle existing jobs, should the time segment expire.
+If set ot `Allow`, the default, another concurrent job will be run. If set to `Forbid`, the current job continues and the new-job
+is skipped. A value of `Replace` cancels the current job and starts a new job in its place.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
