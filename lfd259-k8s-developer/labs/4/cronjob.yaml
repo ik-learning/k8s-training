@@ -20,7 +20,7 @@ spec:
             - date; sleep 30
           restartPolicy: Never
 
-# kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/4/cronjob.yaml
+# kubectl apply -f ./kubernetes-trainings/lfd259-k8s-developer/labs/4/cronjob.yaml
 # kubectl get cronjobs.batch
 # kubectl get job
 # kubectl get jobs.batch

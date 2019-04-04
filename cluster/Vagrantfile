@@ -40,6 +40,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider 'virtualbox' do |vb|
     vb.linked_clone = true
     vb.cpus = 1
+    vb.gui = false
+    # vb.customize ["controlvm", :id, "vrde", "off"]
   end
 
   (1..number_of_master_nodes).each do |n|
@@ -51,7 +53,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define name do |cfg|
       cfg.vm.provider 'virtualbox' do |vb|
         vb.memory = 1024
-        vb.gui = false
         vb.linked_clone = true
         vb.name = name
       end
@@ -90,7 +91,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define name do |cfg|
       cfg.vm.provider 'virtualbox' do |vb|
         vb.memory = 1024
-        vb.gui = false
         vb.linked_clone = true
         vb.name = name
       end
