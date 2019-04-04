@@ -73,3 +73,23 @@ kubectl get pvc
 >
 kubectl apply -f ./lfd259-k8s-developer/labs/lab5/pvc.yaml
 ```
+
+5.3
+
+```
+kubectl apply -f ./lfd259-k8s-developer/labs/lab5/pv-weblog.yaml
+kubectl get pv weblog-pv-volume
+kubectl apply -f ./lfd259-k8s-developer/labs/lab5/pvc-weblog.yaml
+kubectl apply -f ./lfd259-k8s-developer/labs/lab5/basic.fluentd.yaml
+kubectl exec -c webcont -it basicpod -- /bin/bash
+$ ls -l /var/log/nginx/access.log
+$ tailf /var/log/nginx/access.log
+kubectl logs basicpod fdlogger
+kubectl exec -c fdlogger -it basicpod -- /bin/sh
+```
+
+5.4 Update deployment
+
+```
+kubectl edit deployment try1
+```

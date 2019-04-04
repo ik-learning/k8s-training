@@ -18,4 +18,5 @@ while True:
     f.close()
     # Sleep for five seconds then continue the loop
     time.sleep(5)
+    ## Adding a new comment to make image a different version
 

@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: weblog-pv-volume
+spec:
+  # storageClassName: logging
+  capacity:
+    storage: 200Mi
+  accessModes:
+  - ReadWriteOnce
+  hostPath:
+    path: "/tmp/weblog"
+    type: DirectoryOrCreate
+# ---
+# apiVersion: storage.k8s.io/v1
+# kind: StorageClass
+# metadata:
+#   name: logging
+# provisioner: kubernetes.io/no-provisioner
+# reclaimPolicy: Retain
+# mountOptions:
+#   - debug
+# volumeBindingMode: Immediate
+
+# kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab5/pv-weblog.yaml
+# kubectl delete -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab5/pv-weblog.yaml
+# kubectl describe pv weblog-pv-volume
+# kubectl get storageclass --all-namespaces

@@ -1,0 +1,64 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: basicpod
+  labels:
+    type: webserver
+spec:
+  containers:
+  - name: webcont
+    image: nginx
+    ports:
+      - containerPort: 80
+    resources:
+      limits:
+        cpu: 10m
+        memory: 20Mi
+      requests:
+        cpu: 10m
+        memory: 20Mi
+    volumeMounts:
+      - name: weblog-pv-storage
+        mountPath: "/var/log/nginx/"
+  - name: fdlogger
+    image: fluent/fluentd
+    env:
+    - name: FLUENTD_ARGS
+      value: -c /etc/fluentd-config/fluentd.conf
+    ports:
+      - containerPort: 80
+    resources:
+      limits:
+        cpu: 50m
+        memory: 120Mi
+      requests:
+        cpu: 40m
+        memory: 120Mi
+    volumeMounts:
+      - name: weblog-pv-storage
+        mountPath: "/var/log"
+  volumes:
+  - name: weblog-pv-storage   #<-- Attach volume
+    persistentVolumeClaim:
+      claimName: weblog-pv-claim
+  - name: log-config           #<-- Add configmap
+    configMap:
+      name: fluentd-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: basicservice
+  labels:
+    type: webserver
+spec:
+  selector:
+    type: webserver
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+
+# kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab5/basic.fluentd.yaml
+# kubectl delete -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab5/basic.fluentd.yaml

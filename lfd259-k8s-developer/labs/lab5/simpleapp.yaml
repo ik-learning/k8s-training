@@ -42,6 +42,8 @@ spec:
         volumeMounts:
         - name: car-vol
           mountPath: /etc/cars
+        - name: nfs-vol
+          mountPath: /opt
         imagePullPolicy: Always
         readinessProbe:
           exec:
@@ -84,6 +86,9 @@ spec:
         configMap:
           defaultMode: 420
           name: fast-car
+      - name: nfs-vol
+        persistentVolumeClaim:
+          claimName: pvc-one
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -92,3 +97,4 @@ spec:
 status: {}
 
 # kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab5/simpleapp.yaml
+# kubectl delete -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab5/simpleapp.yaml
