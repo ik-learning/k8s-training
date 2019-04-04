@@ -8,7 +8,6 @@ metadata:
   labels:
     app: try1
   name: try1
-  selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/try1
 spec:
   progressDeadlineSeconds: 600
   replicas: 2
@@ -31,12 +30,6 @@ spec:
       - name: simpleapp
         image: cloudkats/simpleapp:latest
         imagePullPolicy: Always
-        readinessProbe:
-          exec:
-            command:
-              - cat
-              - /tmp/healthy
-          periodSeconds: 5
         resources:
           limits:
             cpu: 10m
@@ -46,27 +39,6 @@ spec:
             memory: 20Mi
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
-      - name: goproxy
-        image: k8s.gcr.io/goproxy:0.1
-        ports:
-        - containerPort: 8080
-        readinessProbe:
-          tcpSocket:
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          tcpSocket:
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        resources:
-          limits:
-            cpu: 10m
-            memory: 30Mi
-          requests:
-            cpu: 10m
-            memory: 30Mi
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -74,5 +46,5 @@ spec:
       terminationGracePeriodSeconds: 30
 status: {}
 
-# kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/3/simpleapp.yaml
-# kubectl delete -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/3/simpleapp.yaml
+# kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab5/simpleapp.single.yaml
+# kubectl delete -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab5/simpleapp.single.yaml

@@ -92,4 +92,27 @@ kubectl exec -c fdlogger -it basicpod -- /bin/sh
 
 ```
 kubectl edit deployment try1
+kubectl rollout history deployment try1
+```
+
+Compare the output of the rollout history for the two revisions. Images and labels should be different, with the image v2 being the change we made.
+```
+kubectl rollout history deployment try1 --revision=1 > one.out
+kubectl rollout history deployment try1 --revision=2 > two.out
+diff one.out two.out
+```
+
+View what would be undone using the –dry-run option while undoing the rollout. This allows us to see the new template prior to using it.
+```
+kubectl rollout undo --dry-run=true deployment/try1
+```
+
+In our case there are only two revisions, which is also the default number kept. Were there more we could choose a particular version. The following command would have the same effect as the previous, without the –dry-run option.
+```
+kubectl rollout undo deployment try1 --to-revision=1
+```
+
+Again, it can take a bit for the pods to be terminated and re-created. Keep checking back until they are all running again
+```
+kubectl get pods
 ```

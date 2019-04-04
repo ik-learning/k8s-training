@@ -67,3 +67,7 @@ box-cache: ## Remove Vagrant cache
 #
 k8s: ## List kubernetes setup
 	@echo "export KUBECONFIG=$(PWD)/cluster/temp/admin.conf"
+
+build-docker: ## Build docker image and push
+	@docker build -t cloudkats/simpleapp:v2 -f ./lfd259-k8s-developer/labs/3/app/Dockerfile .
+	@docker push cloudkats/simpleapp:v2
