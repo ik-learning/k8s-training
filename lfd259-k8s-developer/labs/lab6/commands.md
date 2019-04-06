@@ -49,3 +49,18 @@ kubectl get clusterroles
 kubectl get clusterrole secret-access-cr -o yaml
 kubectl describe pod secondapp | grep -i secret
 ```
+
+## Implement a NetworkPolicy
+
+An early architecture decision with Kubernetes was non-isolation, that all pods were able to connect to all other pods and nodes by design. In more recent releases the use of a NetworkPolicy allows for pod isolation. The policy only has effect when the network plugin, like Project Calico, are capable of honoring them. If used with a plugin like flannel they will have no effect. The use of matchLabels allows for more granular selection within the namespace which can be se- lected using a namespaceSelector. Using multiple labels can allow for complex application of rules. More information can be found here: https://kubernetes.io/docs/concepts/services-networking/network-policies
+
+```
+kubectl logs secondapp webserver
+kubectl expose pod secondapp --type=NodePort --port=80
+> error: couldn't retrieve selectors via --selector flag or introspection: the pod has no labels and cannot be exposed
+kubectl create service nodeport secondapp --tcp=80
+kubectl get svc secondapp -o yaml
+kubectl exec -it -c busy secondapp sh
+
+> nc -vz www.linux.com 80
+```

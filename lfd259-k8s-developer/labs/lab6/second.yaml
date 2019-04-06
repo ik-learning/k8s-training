@@ -3,11 +3,22 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: secondapp
+  labels:
+    example: second
 spec:
   serviceAccountName: secret-access-sa
-  securityContext:
-    runAsUser: 1000
+  # securityContext:
+  #   runAsUser: 1000
   containers:
+  - name: webserver
+    image: nginx
+    resources:
+      limits:
+        cpu: 30m
+        memory: 80Mi
+      requests:
+        cpu: 30m
+        memory: 80Mi
   - name: busy
     image: busybox
     command:

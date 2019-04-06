@@ -1,0 +1,20 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-default
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  # - Egress
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 10.12.0.0/16
+    ports:
+    - port: 80
+      protocol: TCP
+
+# kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab6/allclosed.yaml
+# kubectl delete -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab6/allclosed.yaml
