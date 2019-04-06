@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-test
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: www.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: secondapp
+          servicePort: 80
+        path: /
+  - host: thirdpage.org
+    http:
+      paths:
+      - backend:
+          serviceName: thirdpage
+          servicePort: 80
+        path: /
+
+# kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-ckad/labs/lab7/ingress.rule.yaml
+# kubectl delete -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-ckad/labs/lab7/ingress.rule.yaml
+#  worker-1.cluster.vagrant

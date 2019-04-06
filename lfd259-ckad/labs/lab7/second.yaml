@@ -1,0 +1,48 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secondapp
+  labels:
+    example: second
+spec:
+  serviceAccountName: secret-access-sa
+  # securityContext:
+  #   runAsUser: 1000
+  containers:
+  - name: webserver
+    image: nginx
+    resources:
+      limits:
+        cpu: 30m
+        memory: 80Mi
+      requests:
+        cpu: 30m
+        memory: 80Mi
+  - name: busy
+    image: busybox
+    command:
+    - sleep
+    - "3600"
+    securityContext:
+      runAsUser: 2000
+      allowPrivilegeEscalation: false
+      capabilities:
+        add: ["NET_ADMIN", "SYS_TIME"]
+    volumeMounts:
+    - name: mysql
+      mountPath: "/mysqlpwd"
+    resources:
+      limits:
+        cpu: 30m
+        memory: 80Mi
+      requests:
+        cpu: 30m
+        memory: 80Mi
+  volumes:
+  - name: mysql
+    secret:
+      secretName: lfsecret
+
+# kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-ckad/labs/lab7/second.yaml
+# kubectl delete -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-ckad/labs/lab7/second.yaml

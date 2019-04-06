@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: secondapp
+  labels:
+    run: my-nginx
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  type: NodePort
+  selector:
+    example: second
+
+# kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-ckad/labs/lab7/service.yaml
+# kubectl delete -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-ckad/labs/lab7/service.yaml
