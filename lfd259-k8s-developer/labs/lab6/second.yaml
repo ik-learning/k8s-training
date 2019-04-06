@@ -17,12 +17,20 @@ spec:
       allowPrivilegeEscalation: false
       capabilities:
         add: ["NET_ADMIN", "SYS_TIME"]
+    volumeMounts:
+    - name: mysql
+      mountPath: "/mysqlpwd"
     resources:
       limits:
-        cpu: 10m
-        memory: 20Mi
+        cpu: 30m
+        memory: 80Mi
       requests:
-        cpu: 10m
-        memory: 20Mi
+        cpu: 30m
+        memory: 80Mi
+  volumes:
+  - name: mysql
+    secret:
+      secretName: lfsecret
 
 # kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab6/second.yaml
+# kubectl delete -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-k8s-developer/labs/lab6/second.yaml
