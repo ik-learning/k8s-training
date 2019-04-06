@@ -38,3 +38,14 @@ capsh --decode=00000000aa0435fb
 echo LFTr@1n | base64
 kubectl exec -ti secondapp -- /bin/sh
 ```
+
+## Create and use ServiceAccounts
+
+We can use ServiceAccounts to assign cluster roles, or the ability to use particular HTTP verbs. In this section we will create a new ServiceAccount and grant it access to view secrets.
+
+```
+kubectl get serviceaccounts
+kubectl get clusterroles
+kubectl get clusterrole secret-access-cr -o yaml
+kubectl describe pod secondapp | grep -i secret
+```

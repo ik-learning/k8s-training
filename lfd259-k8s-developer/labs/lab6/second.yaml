@@ -4,6 +4,7 @@ kind: Pod
 metadata:
   name: secondapp
 spec:
+  serviceAccountName: secret-access-sa
   securityContext:
     runAsUser: 1000
   containers:
