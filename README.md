@@ -4,7 +4,7 @@
 
 <!-- START makefile-doc -->
 ```
-$ make help
+$ make help 
 install                        Install dev dependencies
 validate                       Validate multiple files
 vagrant-setup                  Prepare vagrant setup
@@ -16,6 +16,8 @@ box-ssh                        SSH to Vagrant box. BOX_NAME=master-1 make box-ss
 box-cache                      Remove Vagrant cache
 k8s                            List kubernetes setup
 build-docker                   Build docker image and push
+minikube-up                    Start Minikube cluster
+minikube-delete                Delete Minikube cluster 
 ```
 <!-- END makefile-doc -->
 

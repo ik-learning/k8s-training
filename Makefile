@@ -71,3 +71,14 @@ k8s: ## List kubernetes setup
 build-docker: ## Build docker image and push
 	@docker build -t cloudkats/simpleapp:v2 -f ./lfd259-k8s-developer/labs/3/app/Dockerfile .
 	@docker push cloudkats/simpleapp:v2
+
+############
+# Minikube #
+############
+minikube-up: ## Start Minikube cluster
+	@echo "Deploy cluster with minikube"
+	@bin/minikube.sh
+
+minikube-delete: ## Delete Minikube cluster
+	@echo "Deletecluster with minikube"
+	@bin/minikube.delete.sh
