@@ -4,7 +4,7 @@
 
 <!-- START makefile-doc -->
 ```
-$ make help 
+$ make help
 install                        Install dev dependencies
 validate                       Validate multiple files
 vagrant-setup                  Prepare vagrant setup
@@ -15,7 +15,7 @@ box-provision                  Provision boxes
 box-ssh                        SSH to Vagrant box. BOX_NAME=master-1 make box-ssh
 box-cache                      Remove Vagrant cache
 k8s                            List kubernetes setup
-build-docker                   Build docker image and push 
+build-docker                   Build docker image and push
 ```
 <!-- END makefile-doc -->
 
@@ -23,8 +23,11 @@ build-docker                   Build docker image and push
 
 - [Vagrant K8s Lab](https://github.com/xbernpa/vagrant-kubernetes-lab)
 - [Vagrang Kubo](https://github.com/rgl/kubernetes-ubuntu-vagrant)
+- [K8s The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/04-certificate-authority.md)
 - [App Example](https://github.com/ik-learning/vagrant-ubuntu-k8s/tree/master/examples/client/go)
 - [K8s Basic](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
+- [K8s Vagrant](https://github.com/ereslibre/kubernetes-cluster-vagrant)
+- [K8s Networking Policies](https://github.com/ahmetb/kubernetes-network-policy-recipes)
 <!-- TODO certificates out. Deploy stuff via worker -->
 
 ## To try
@@ -56,6 +59,6 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 
 [Vim](https://devhints.io/vim)
 [Set Vim](https://stackoverflow.com/questions/26962999/wrong-indentation-when-editing-yaml-in-vim)
-
+[VIM cheat sheet](https://vim.rtorr.com/)
 
 ## TODO

@@ -37,3 +37,4 @@ subjects:
   namespace: kube-system
 
 # kubectl apply -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-ckad/labs/lab7/ingress.rbac.yaml
+# kubectl delete -f /Users/ivanka/code/self/kubernetes-trainings/lfd259-ckad/labs/lab7/ingress.rbac.yaml
