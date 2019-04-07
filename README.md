@@ -4,7 +4,7 @@
 
 <!-- START makefile-doc -->
 ```
-$ make help 
+$ make help
 install                        Install dev dependencies
 validate                       Validate multiple files
 vagrant-setup                  Prepare vagrant setup
@@ -17,7 +17,7 @@ box-cache                      Remove Vagrant cache
 k8s                            List kubernetes setup
 build-docker                   Build docker image and push
 minikube-up                    Start Minikube cluster
-minikube-delete                Delete Minikube cluster 
+minikube-delete                Delete Minikube cluster
 ```
 <!-- END makefile-doc -->
 
@@ -63,4 +63,6 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 [Set Vim](https://stackoverflow.com/questions/26962999/wrong-indentation-when-editing-yaml-in-vim)
 [VIM cheat sheet](https://vim.rtorr.com/)
 
-## TODO
+## Exam
+
+[Video CKAD](https://www.youtube.com/watch?v=rnemKrveZks&feature=youtu.be)
