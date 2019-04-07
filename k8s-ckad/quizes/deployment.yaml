@@ -1,0 +1,64 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2019-04-07T12:47:28Z
+  generation: 1
+  name: frontend-deployment
+  namespace: default
+  resourceVersion: "2276"
+  selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/frontend-deployment
+  uid: 4d222c72-5933-11e9-b771-0242ac11002c
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 4
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      name: busybox-pod
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: busybox-pod
+    spec:
+      containers:
+      - command:
+        - sh
+        - -c
+        - echo Hello Kubernetes! && sleep 3600
+        image: busybox888
+        imagePullPolicy: Always
+        name: busybox-container
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  conditions:
+  - lastTransitionTime: 2019-04-07T12:47:28Z
+    lastUpdateTime: 2019-04-07T12:47:28Z
+    message: Deployment does not have minimum availability.
+    reason: MinimumReplicasUnavailable
+    status: "False"
+    type: Available
+  - lastTransitionTime: 2019-04-07T12:47:28Z
+    lastUpdateTime: 2019-04-07T12:47:28Z
+    message: ReplicaSet "frontend-deployment-b9b7c6cb6" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  replicas: 4
+  unavailableReplicas: 4
+  updatedReplicas: 4
