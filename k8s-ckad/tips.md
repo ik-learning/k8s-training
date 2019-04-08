@@ -1,4 +1,3 @@
-
 [KubeCtl](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run)
 [CheatSheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
@@ -7,13 +6,14 @@ kubectl run nginx --image=nginx
 ```
 
 Namespaces
+
 ```
 kubectl create namespace dev
 kubectl cofnig set-context $(kubectl config current-context) --namespace=dev
 ```
 
-
 Commands:
+
 ```
 kubectl run nginx --image=nginx (deployment)
 kubectl run nginx --image=nginx --restart=Never (pod)
@@ -48,7 +48,6 @@ kubectl create configmap <name> --from-literal=<key>=<value>
 kubectl create configmap <name> --from-file=<file.properties>
 ```
 
-
 Unix/bash
 
 ```sh
@@ -58,7 +57,27 @@ args: ["-c", "mkdir -p collect;while true; do cat /var/data/* > /collect/data.tx
 ```
 
 Grep
+
 ```
 kubectl describe pods | grep --context=10 annotations:
 kubectl describe pods | grep --context=10 Events:
+```
+
+Secrets
+
+```sh
+echo -n "test" | base64
+kubectl create secret generic app-secret --from-literal=<key>=<value>
+```
+
+Security
+
+```sh
+kubectl exec ubuntu-sleeper whoami
+```
+
+
+Switch cluster
+```
+kubectl config use-context <cluster>
 ```

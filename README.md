@@ -66,3 +66,4 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 ## Exam
 
 [Video CKAD](https://www.youtube.com/watch?v=rnemKrveZks&feature=youtu.be)
+[Curriculum](https://github.com/cncf/curriculum)
