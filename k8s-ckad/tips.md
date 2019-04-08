@@ -81,3 +81,19 @@ Switch cluster
 ```
 kubectl config use-context <cluster>
 ```
+
+## Taints
+
+```sh
+kubectl taint nodes node-name key=value:tainf-effect
+kubectl taint nodes node1 app=blue:NoSchedule
+```
+
+## Node selectors
+
+```sh
+kubectl label nodes <nodename> <label-key>=<label-value>
+kubectl label nodes node1 size=Large
+```
+
+Taint effects: NoSchedule|PreferNoSchedule|NoExecute
