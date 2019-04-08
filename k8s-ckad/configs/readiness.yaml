@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mayapp-pod
+  labels:
+    app: mayapp
+    costcenter: uk
+    type: frontend
+spec:
+  containers:
+  - name: webapp
+    image: webapp
+    ports:
+    - containerPort: 8080
+    readinessProbe:
+      httpGet:
+        path: /api/ready
+        port: 8080
+      tcpSocket:
+        port: 3306
+      exec:
+        command:
+        - cat
+        - app/is_ready
+      initialDelaySeconds: 10
+    resources: {}
+
+
+
+
