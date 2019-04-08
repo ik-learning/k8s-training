@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mayapp-pod
+  labels:
+    app: mayapp
+    costcenter: uk
+    type: frontend
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    ports:
+    - containerPort: 8000
+    resources: {}
+  - name: log-agent
+    image: log-agent
+    resources: {}
+

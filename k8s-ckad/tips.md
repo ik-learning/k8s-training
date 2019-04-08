@@ -97,3 +97,9 @@ kubectl label nodes node1 size=Large
 ```
 
 Taint effects: NoSchedule|PreferNoSchedule|NoExecute
+
+
+
+```
+kubectl exec -n elastic-stack -it app -- sh
+```

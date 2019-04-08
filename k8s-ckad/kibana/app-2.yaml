@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: app
+  name: app
+spec:
+  containers:
+  - image: kodekloud/event-simulator
+    imagePullPolicy: Always
+    name: app
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /log
+      name: log-volume
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-k8jp5
+      readOnly: true
+  - name: sidecar
+    image: kodekloud/filebeat-configured
+    volumeMounts:
+    - name: log-volume
+      mountPath: /var/log/event-simulator
+  volumes:
+  - hostPath:
+      path: /var/log/webapp
+      type: DirectoryOrCreate
+    name: log-volume
+  - name: default-token-k8jp5
+    secret:
+      defaultMode: 420
+      secretName: default-token-k8jp5
