@@ -103,3 +103,15 @@ Taint effects: NoSchedule|PreferNoSchedule|NoExecute
 ```
 kubectl exec -n elastic-stack -it app -- sh
 ```
+
+Selectors
+```
+kubectl get pods --selector bu=finance
+kubectl get all --selector env=prod
+kubectl get all --selector env=prod,bu=finance,tier=frontend
+```
+
+Rollouts
+```
+kubectl rollout status -w deployment/frontend
+```

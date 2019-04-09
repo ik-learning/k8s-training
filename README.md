@@ -67,3 +67,7 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 
 [Video CKAD](https://www.youtube.com/watch?v=rnemKrveZks&feature=youtu.be)
 [Curriculum](https://github.com/cncf/curriculum)
+
+## Chalanges
+
+[K8s Challange](https://github.com/kodekloudhub/kubernetes-challenge-1-wordpress)
