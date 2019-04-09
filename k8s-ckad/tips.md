@@ -115,3 +115,7 @@ Rollouts
 ```
 kubectl rollout status -w deployment/frontend
 ```
+
+```
+find / -name "*.yaml"
+```

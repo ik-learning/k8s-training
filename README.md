@@ -49,6 +49,10 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 [EKS K8s Workshop](https://github.com/aws-samples/aws-workshop-for-kubernetes)
 [GCS K8s Workshop](https://github.com/aws-samples/aws-workshop-for-kubernetes)
 
+## Labs
+
+[CKA Lab](https://github.com/walidshaari/Kubernetes-Certified-Administrator)
+
 ## Courses
 
 [Scalable Microservices with Kubernetes](https://eu.udacity.com/course/scalable-microservices-with-kubernetes--ud615)
