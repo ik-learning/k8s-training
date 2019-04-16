@@ -4,7 +4,7 @@
 
 <!-- START makefile-doc -->
 ```
-$ make help
+$ make help 
 install                        Install dev dependencies
 validate                       Validate multiple files
 vagrant-setup                  Prepare vagrant setup
@@ -16,8 +16,9 @@ box-ssh                        SSH to Vagrant box. BOX_NAME=master-1 make box-ss
 box-cache                      Remove Vagrant cache
 k8s                            List kubernetes setup
 build-docker                   Build docker image and push
-minikube-up                    Start Minikube cluster
-minikube-delete                Delete Minikube cluster
+kube-up                        Start Minikube cluster
+kub-stop                       Stop Minikube cluster
+kube-delete                    Delete Minikube cluster 
 ```
 <!-- END makefile-doc -->
 
@@ -43,15 +44,18 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 
 ## Exercides for CKAD
 
-[CKAD alot](https://github.com/dgkanatsios/CKAD-exercises)
+
 [Kubernetes by Example](http://kubernetesbyexample.com/)
-[K8s The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
 [EKS K8s Workshop](https://github.com/aws-samples/aws-workshop-for-kubernetes)
 [GCS K8s Workshop](https://github.com/aws-samples/aws-workshop-for-kubernetes)
 
-## Labs
+## CKA
 
 [CKA Lab](https://github.com/walidshaari/Kubernetes-Certified-Administrator)
+[CKA Install](https://www.avthart.com/posts/create-your-own-minikube-using-vagrant-and-kubeadm/)
+[CKA Docs](https://github.com/walidshaari/Kubernetes-Certified-Administrator)
+[CKAD alot](https://github.com/dgkanatsios/CKAD-exercises)
+[K8s The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
 
 ## Courses
 
@@ -75,3 +79,15 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 ## Chalanges
 
 [K8s Challange](https://github.com/kodekloudhub/kubernetes-challenge-1-wordpress)
+
+## Installations
+
+[Kubespray](https://github.com/kubernetes-sigs/kubespray)
+
+## Docker Certifications
+
+[DCA](https://github.com/Evalle/DCA)
+[DevOps Academy](https://github.com/DevOps-Academy-Org/dca-prep-guide)
+
+
+https://github.com/twajr/ckad-prep-notes#detailed-review

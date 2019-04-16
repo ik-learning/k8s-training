@@ -75,10 +75,16 @@ build-docker: ## Build docker image and push
 ############
 # Minikube #
 ############
-minikube-up: ## Start Minikube cluster
-	@echo "Deploy cluster with minikube"
-	@bin/minikube.sh
+kube-up: ## Start Minikube cluster
+	@minikube start --vm-driver=virtualbox --kubernetes-version=v1.13.5 
+	@minikube config set memory 4192
+	@minikube config set cpus 2
+	@minikube config set heapster true
+	@minikube config set ingress true
 
-minikube-delete: ## Delete Minikube cluster
+kub-stop: ## Stop Minikube cluster
+	@minikube stop
+
+kube-delete: ## Delete Minikube cluster
 	@echo "Deletecluster with minikube"
 	@bin/minikube.delete.sh
