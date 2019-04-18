@@ -4,7 +4,7 @@
 
 <!-- START makefile-doc -->
 ```
-$ make help 
+$ make help
 install                        Install dev dependencies
 validate                       Validate multiple files
 vagrant-setup                  Prepare vagrant setup
@@ -18,7 +18,7 @@ k8s                            List kubernetes setup
 build-docker                   Build docker image and push
 kube-up                        Start Minikube cluster
 kub-stop                       Stop Minikube cluster
-kube-delete                    Delete Minikube cluster 
+kube-delete                    Delete Minikube cluster
 ```
 <!-- END makefile-doc -->
 
@@ -44,18 +44,29 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 
 ## Exercides for CKAD
 
-
+[CKAD alot](https://github.com/dgkanatsios/CKAD-exercises)
 [Kubernetes by Example](http://kubernetesbyexample.com/)
 [EKS K8s Workshop](https://github.com/aws-samples/aws-workshop-for-kubernetes)
 [GCS K8s Workshop](https://github.com/aws-samples/aws-workshop-for-kubernetes)
 
+
 ## CKA
 
-[CKA Lab](https://github.com/walidshaari/Kubernetes-Certified-Administrator)
+[CKA With Real Environment and QA](https://github.com/arush-sal/cka-practice-environment)
+
+[CKA Lab Check Videos](https://github.com/walidshaari/Kubernetes-Certified-Administrator)
+
 [CKA Install](https://www.avthart.com/posts/create-your-own-minikube-using-vagrant-and-kubeadm/)
+
 [CKA Docs](https://github.com/walidshaari/Kubernetes-Certified-Administrator)
-[CKAD alot](https://github.com/dgkanatsios/CKAD-exercises)
+
 [K8s The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
+
+[ETCD Backup](https://github.com/mmumshad/certified-kubernetes-administrator-course-answers/blob/master/etcd-backup-and-restore.md)
+
+[K8s Example Exam](https://labs.play-with-k8s.com/)
+
+[K8s Networking](https://ahmet.im/blog/kubernetes-network-policy/)
 
 ## Courses
 
@@ -91,3 +102,9 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 
 
 https://github.com/twajr/ckad-prep-notes#detailed-review
+
+
+## Blogs
+
+[Network Policies](https://ahmet.im/blog/kubernetes-network-policy/)
+[CKA Way to pass](https://medium.com/@pmvk/tips-to-crack-certified-kubernetes-administrator-cka-exam-c949c7a9bea1)
