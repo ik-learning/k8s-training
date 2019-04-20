@@ -12,8 +12,15 @@ Grep
 openssl x509 -in <file> -text -noout | grep -i valid -C 2
 openssl req -in <file> -text -noout
 ps -aux | grep etcd
+INTERNAL_IP=$(ip addr show enp0s8 | grep "inet " | awk '{print $2}' | cut -d / -f 1)
+lsof -i :<PORT>
 openssl x509 -req -in /etc/kubernetes/pki/apiserver-etcd-client.csr -CA /etc/kubernetes/pki/etcd/ca.crt -CAkey /etc/kubernetes/pki/etcd/ca.key -CAcreateserial -out
 $(cat server.csr | base64 | tr -d '\n')
+```
+
+Kubectl
+```
+kubectl create clusterrolebinding crb-bootstrappers --clusterrole=system:node-bootstrapper  --group=system:bootstrappers
 ```
 
 Location of all configurations

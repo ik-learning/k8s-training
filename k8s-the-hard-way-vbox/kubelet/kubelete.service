@@ -1,0 +1,35 @@
+# /lib/systemd/system/kubelet.service
+[Unit]
+Description=kubelet: The Kubernetes Node Agent
+Documentation=https://github.com/kubernetes/kubernetes
+
+[Service]
+ExecStart=/usr/bin/kubelet \\
+	--bootstrap-kubeconfig="/tmp/bootstrap-kubeconfig" \\
+	--rotate-certificates=true \\
+    --register-node=true \\
+    --v=2
+
+Restart=always
+StartLimitInterval=5
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
+
+/root/ca.crt
+--network-plugin=cni \\
+	--cni-conf-dir=/etc/cni/net.d \\
+
+/usr/bin/kubelet \
+	--bootstrap-kubeconfig="/tmp/bootstrap-kubeconfig" \
+	--config=/var/lib/kubelet/kubelet-config.yaml \
+	--rotate-certificates=true \
+    --register-node=true \
+    --v=2
+
+--config=/var/lib/kubelet/kubelet-config.yaml \\
+systemctl daemon-reload
+sudo service kubelet stop
+sudo service kubelet start

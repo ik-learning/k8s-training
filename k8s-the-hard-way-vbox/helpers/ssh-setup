@@ -1,0 +1,3 @@
+cat >> ~/.ssh/authorized_keys <<EOF
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8b7FKmouOU/a3d9exL/xF9lxanjySLywWoyfh1m5zV+Sy1JKPL5nIoRsqoA8rXTLwPlUi7QuUXMetlvGW3FcD+0QZjMLV72CCExJAcaMGE4FyljFnwO/qkSLMgTdPd6pAufhovPW0Q85pDHdq0yOGAarAbcmVqFxd8iwHRoeOo7xYdQE1NsVboi4hHJUfJMrvEpizneymbOO5pB7ID4i/nTZ6AE5j/kpHM//BxiApcQwPCquRupLCSZyzLQV066QW0H2iqO04Kw7j2KmvwLR+2YK1U+XellgqUrd14Y73siSrr9nThGngB5c6vHi+Ddb49UoMPkMZUAqYkptSGx91 vagrant@master-1
+EOF

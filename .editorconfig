@@ -35,7 +35,7 @@ max_line_length = 0
 indent_size = 2
 indent_style = space
 trim_trailing_whitespace = false
-max_line_length = 100
+max_line_length = 120
 
 # Machine-generated files
 [{*.scpt,*.plist,*.dot,*.db}]
