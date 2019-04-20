@@ -124,13 +124,17 @@ https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-im
 - [X] Harder to setup
 - [X] More Servers
 
+## Fault Tolerance For HA Setup
 
+`Quorum = N / 2 + 1`
 
-
-
-
-
-
-
-
+| Managers | Majority | Fault Tolerance | Recomended |
+|--|--|--|--|
+| 1  | 1 | 0 ||
+| 2  | 2 | 0 ||
+| 3  | 2 | 1 |V|
+| 4  | 3 | 1 ||
+| 5  | 3 | 2 |V|
+| 6  | 4 | 2 ||
+| 7  | 4 | 3 |V|
 

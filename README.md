@@ -3,7 +3,8 @@
 ## Supported Commands
 
 <!-- START makefile-doc -->
-```
+
+```sh
 $ make help
 install                        Install dev dependencies
 validate                       Validate multiple files
@@ -101,13 +102,11 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 [DevOps Academy](https://github.com/DevOps-Academy-Org/dca-prep-guide)
 
 
-https://github.com/twajr/ckad-prep-notes#detailed-review
-
-
 ## Blogs
 
 [Network Policies](https://ahmet.im/blog/kubernetes-network-policy/)
 [CKA Way to pass](https://medium.com/@pmvk/tips-to-crack-certified-kubernetes-administrator-cka-exam-c949c7a9bea1)
+[EKS in Production](https://kubedex.com/90-days-of-aws-eks-in-production/)
 
 ## Installations
 
