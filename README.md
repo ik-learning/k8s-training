@@ -108,3 +108,7 @@ https://github.com/twajr/ckad-prep-notes#detailed-review
 
 [Network Policies](https://ahmet.im/blog/kubernetes-network-policy/)
 [CKA Way to pass](https://medium.com/@pmvk/tips-to-crack-certified-kubernetes-administrator-cka-exam-c949c7a9bea1)
+
+## Installations
+
+[Vagrant Ansible](https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/)
