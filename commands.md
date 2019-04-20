@@ -9,6 +9,11 @@ ollout
 
 ```
 kubectl rollout history deployments
+kubectl get componentstatuses
+top
+df -h
+sudo journalctl -u kubelet
+sudo systemctl status kubelet
 ```
 
 ```
