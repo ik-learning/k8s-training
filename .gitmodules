@@ -1,0 +1,3 @@
+[submodule "cka-practice-environment"]
+	path = cka-practice-environment
+	url = https://github.com/arush-sal/cka-practice-environment.git

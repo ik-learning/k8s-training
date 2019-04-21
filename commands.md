@@ -12,6 +12,7 @@ kubectl rollout history deployments
 kubectl get componentstatuses
 top
 df -h
+ps -ef --forest
 sudo journalctl -u kubelet
 sudo systemctl status kubelet
 ```
@@ -36,19 +37,11 @@ ENV
 kubectl run nginx --image=nginx --restart=Never --env=VAR1=foobar
 ```
 
-or
-
-```yaml
-apiVersion: v1
-kind: Pod
-	metadata: name:
-spec:
-	containers:
-	- name: nginx
-		image: nginx
-		env:
-		- name: VAR1
-			value: "foobar
-	restartPolicy: Never
+```
+kubectl auth can-i craete deployments
+kubectl auth can-i delete nodes
+kubectl auth can-i craete deployments --as dev-user
+kubectl auth can-i list pod/dark-blue-app -n blue --as dev-user
+kubectl auth can-i create deployments -n blue --as dev-user
 ```
 
