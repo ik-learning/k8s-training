@@ -1,0 +1,1 @@
+define scenarious related to k8s training

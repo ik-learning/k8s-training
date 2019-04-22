@@ -15,6 +15,9 @@ df -h
 ps -ef --forest
 sudo journalctl -u kubelet
 sudo systemctl status kubelet
+sudo systemd-analyze verify etcd.service
+lsof -i :<PORT>
+$(cat server.csr | base64 | tr -d '\n')
 ```
 
 ```
@@ -45,3 +48,22 @@ kubectl auth can-i list pod/dark-blue-app -n blue --as dev-user
 kubectl auth can-i create deployments -n blue --as dev-user
 ```
 
+
+
+/usr/local/bin/etcd \
+ --name master-1 \
+ --cert-file=/etc/etcd/etcd-server.crt \
+ --key-file=/etc/etcd/etcd-server.key \
+ --peer-cert-file=/etc/etcd/etcd-server.crt \
+ --peer-key-file=/etc/etcd/etcd-server.key \
+ --trusted-ca-file=/etc/etcd/ca.crt \
+ --peer-trusted-ca-file=/etc/etcd/ca.crt \
+ --peer-client-cert-auth \
+ --client-cert-auth \
+ --initial-advertise-peer-urls https://192.168.5.11:2380 \
+ --listen-peer-urls https://192.168.5.11:2379,https://127.0.0.1:2379 \
+ --advertise-client-urls https://192.168.5.11:2379 \
+ --initial-cluster-token etcd-cluster-0 \
+ --initial-cluster master-1=https://192.168.5.11:2380,master-2=https://192.168.5.12.2380 \
+ --initial-cluster-state new \
+ --data-dir=/var/lib/etcd

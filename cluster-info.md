@@ -1,5 +1,7 @@
 # Cluster information
 
+https://kubernetes.io/docs/setup/pick-right-solution/
+
 ## Cluster Design
 
   * [Cluster Design](#cluster-design)

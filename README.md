@@ -69,6 +69,9 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 
 [K8s Networking](https://ahmet.im/blog/kubernetes-network-policy/)
 
+[Labs](https://labs.play-with-k8s.com/#)
+
+[Bootcamp](https://schoolofdevops.github.io/ultimate-kubernetes-bootcamp/)
 
 ## Courses
 
@@ -109,6 +112,7 @@ https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS158x+1T2018/course
 [CKA Way to pass](https://medium.com/@pmvk/tips-to-crack-certified-kubernetes-administrator-cka-exam-c949c7a9bea1)
 [EKS in Production](https://kubedex.com/90-days-of-aws-eks-in-production/)
 [CKA Certs](https://nixaid.com/deploying-kubernetes-cluster-from-scratch/)
+[Kubectl Tips](https://blog.heptio.com/kubectl-resource-short-names-heptioprotip-c8eff9fb7202)
 
 ## Installations
 
