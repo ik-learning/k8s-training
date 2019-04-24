@@ -53,6 +53,7 @@ kubectl auth can-i delete nodes
 kubectl auth can-i craete deployments --as dev-user
 kubectl auth can-i list pod/dark-blue-app -n blue --as dev-user
 kubectl auth can-i create deployments -n blue --as dev-user
+k auth can-i craete deployments --as dev-user
 ```
 
 

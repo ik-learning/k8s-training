@@ -42,5 +42,5 @@ sudo tar -zcvf etcd.tar.gz etcd
 
 Copy the etcd directory to another server:
 ```sh
-cop etcd.tar.gz cloud@user....:~/
+scp etcd.tar.gz cloud@user....:~/
 ```

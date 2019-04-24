@@ -1,0 +1,3 @@
+cat >> ~/.ssh/authorized_keys <<EOF
+KEY_TODO_KEY
+EOF

@@ -19,7 +19,7 @@ kubectl get pods -n kube-system
 
 Set the variable to the latest stable release of Kubernetes:
 ```sh
-export VERSION=v1.14.1
+export VERSION=v1.13.5
 ```
 
 Set the ARCH variable to the amd64 system:
@@ -29,6 +29,7 @@ export ARCH=amd64
 
 Curl the latest stable version of Kuberntetes:
 ```sh
+curl -sSL https://dl.k8s.io/release/${VERSION}/bin/linux/${ARCH}/kubeadm > kubeadm
 sudo install -o root -g root -m 0755 ./kubeadm /user/bin/kubeadm
 ```
 
@@ -44,7 +45,7 @@ sudo kubeadm upgrade plan
 
 Apply the upgrade to 1.14.1
 ```sh
-kubeadm upgrade apply v1.14.1
+kubeadm upgrade apply v1.13.5
 ```
 
 View the difference between the old and new machines:
