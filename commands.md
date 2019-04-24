@@ -24,6 +24,7 @@ hostname
 cat /proc/cpuinfo
 ps aux
 ln -s {source-filename} {symbolic-filename}
+sudo apt-mark hold docker-ce kubelet kubeadm kubectl
 ```
 
 ```
@@ -59,4 +60,9 @@ Kubeadm
 ```
 kubeadm token list
 kubeadm join --token c04797.8db60f6b2c0dd078 192.168.12.10:6443 --discovery-token-ca-cert-hash sha256:<hash>
+```
+
+Locations:
+```
+/etc/kubernetes/manifests
 ```
