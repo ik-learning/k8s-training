@@ -71,3 +71,11 @@ Watch the nodes as they change version:
 ```sh
 kubectl get nodes -w
 ```
+
+
+-------- Version 2 -----
+
+Get version 1.13.5 of kubeadm
+```
+```
+

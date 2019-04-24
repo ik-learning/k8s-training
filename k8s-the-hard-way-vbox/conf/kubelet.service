@@ -1,0 +1,13 @@
+# /lib/systemd/system/kubelet.service
+[Unit]
+Description=kubelet: The Kubernetes Node Agent
+Documentation=https://kubernetes.io/docs/home/
+
+[Service]
+ExecStart=/usr/bin/kubelet
+Restart=always
+StartLimitInterval=0
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
