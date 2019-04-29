@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Cluster information</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="cluster-information">Cluster information</h1>
+<p><a href="https://kubernetes.io/docs/setup/pick-right-solution/">https://kubernetes.io/docs/setup/pick-right-solution/</a></p>
+<h2 id="cluster-design">Cluster Design</h2>
+<ul>
+<li><a href="#cluster-design">Cluster Design</a></li>
+<li><a href="#purpose">Purpose</a>
+<ul>
+<li><a href="#eduction">Eduction</a></li>
+<li><a href="#development---testing">Development &amp; Testing</a></li>
+</ul>
+</li>
+<li><a href="#hosting-production-applications">Hosting Production Applications</a></li>
+<li><a href="#cloud-or-onprem">Cloud or OnPrem</a></li>
+<li><a href="#storage">Storage</a></li>
+<li><a href="#nodes">Nodes</a></li>
+<li><a href="#workload">Workload</a></li>
+</ul>
+<h2 id="purpose">Purpose</h2>
+<h3 id="eduction">Eduction</h3>
+<ul>
+<li>Minikube</li>
+<li>Single node cluster with kubeadm/GCP/AWS</li>
+</ul>
+<h3 id="development--testing">Development &amp; Testing</h3>
+<ul>
+<li>Mulit-node cluster with a Single Master and Multiple workers</li>
+<li>Setup using kubeadm tool to kuick provision on GCP or AWS or AKS</li>
+</ul>
+<h2 id="hosting-production-applications">Hosting Production Applications</h2>
+<ul>
+<li>High Availability Multi Node cluster with multiple master nodes</li>
+<li>Kubeadm or GCP or Kops on AWS or other supported platform</li>
+<li>Upto 5000 nodes</li>
+<li>Upto 150,000 PODs in the cluster</li>
+<li>Upto 300,000 Total Containers</li>
+<li>Upto 100 Pod per Node</li>
+</ul>
+<h2 id="cloud-or-onprem">Cloud or OnPrem</h2>
+<ul>
+<li>Use Kubeadm fro on-prem</li>
+<li>GKE for GCP</li>
+<li>Kops for AWS</li>
+<li>Azure Kubernetes Service(AKS) for Azure</li>
+</ul>
+<h2 id="storage">Storage</h2>
+<ul>
+<li>High Performance - SSD Backend Storage</li>
+<li>Multiple Concurrent connections - Network Based storage</li>
+<li>Persistent shared volumes for shared access across multiple PODs</li>
+<li>Label nodes with dpecific disk types</li>
+<li>Use Node Selectors to assign applications to nodes with specific disk types</li>
+</ul>
+<h2 id="nodes">Nodes</h2>
+<ul>
+<li>Virtual or Physical Machines</li>
+<li>Minimum of 4 Node Cluster (Size based on workloads)</li>
+<li>Master vs Worker Nodes</li>
+<li>Linux X86_64 Arcthitecture</li>
+</ul>
+<h2 id="workload">Workload</h2>
+<ul>
+<li>How many?</li>
+<li>What kind?
+-- Web
+-- Big Data/Analytics</li>
+<li>Application Resource Requirements
+-- CPU Intensive
+-- Memtory Intensive</li>
+<li>Traffic
+-- Heavy Traffic
+-- Burst Traffic</li>
+</ul>
+<h2 id="choosing-infrastructure">Choosing Infrastructure</h2>
+<ul>
+<li>Laptop</li>
+<li>Single/Multi Node cluster</li>
+</ul>
+<h3 id="turnkey-solutions">Turnkey Solutions</h3>
+<ul>
+<li>
+<p>Provison required VMs</p>
+</li>
+<li>
+<p>Use Tools/Scripts</p>
+</li>
+<li>
+<p>You provsiion VMs</p>
+</li>
+<li>
+<p>You Configure VMs</p>
+</li>
+<li>
+<p>You use Scripts to Deploy Cluster</p>
+</li>
+<li>
+<p>You Maintain VMs yourself</p>
+</li>
+</ul>
+<p>Solitions</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> OpenShift</li>
+<li>[V] Cloudfoundry Container Runtime</li>
+<li>[V] Cloudfoundry PKS on AWS,VMware,Azure and GCP</li>
+<li>[V] Vagrant</li>
+</ul>
+<h3 id="hosted-solutions-managed">Hosted Solutions (Managed)</h3>
+<ul>
+<li>Kubernetes-As-A-Service</li>
+<li>Provider provision VMs</li>
+<li>Provider installs Kubernetes</li>
+<li>Provider mainstains Web</li>
+</ul>
+<p>Solitions</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Google Container Engine (GKE)</li>
+<li>[V] Openshift Online</li>
+<li>[V] Aure Kubernetes Service</li>
+<li>[V] Amazon EKS</li>
+</ul>
+<h2 id="choosing-a-network-solutions">Choosing a Network Solutions</h2>
+<p><a href="https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model">https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model</a></p>
+<h2 id="etcd-deployment-strategies">ETCD Deployment Strategies</h2>
+<h3 id="stacked-topology">Stacked Topology</h3>
+<ul class="contains-task-list">
+<li>[V] Easier to setup</li>
+<li>[V] Easier to manage</li>
+<li>[V] Fewer Servers</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Risk during failures</li>
+</ul>
+<h3 id="external-etcd-topology">External ETCD Topology</h3>
+<ul class="contains-task-list">
+<li>[V] Less Risky</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Harder to setup</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> More Servers</li>
+</ul>
+<h2 id="fault-tolerance-for-ha-setup">Fault Tolerance For HA Setup</h2>
+<p><code>Quorum = N / 2 + 1</code></p>
+<table>
+<thead>
+<tr>
+<th>Managers</th>
+<th>Majority</th>
+<th>Fault Tolerance</th>
+<th>Recomended</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>V</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td>2</td>
+<td>V</td>
+</tr>
+<tr>
+<td>6</td>
+<td>4</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>4</td>
+<td>3</td>
+<td>V</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cluster-sizing">Cluster Sizing</h2>
+<p>It depends... in general, sizing your environment for a Docker Swarm Cluster is going to be the same process that you
+would use for any application in you ecosystem.
+You need to be shure that you understand when and how its going to be used.
+You would need to consider things like:</p>
+<h3 id="cpu-memory-and-disk">CPU, Memory and Disk</h3>
+<p>You containerized application will have the same requirements that it would if running on any other infrastructure (physical or virtual).
+Be sure your underlying host(s) have the necesary horsepower</p>
+<h3 id="concurency">Concurency</h3>
+<p>What are the load requirements of the application at peak and in total? These will determine optimal placement and the amound of hardware
+resources(contraints) you need to allocate.</p>
+<h2 id="recomendations">Recomendations</h2>
+<ul>
+<li>Plan for load Balancing</li>
+<li>Use External Certificate Authority for Production</li>
+<li>Performance considerations</li>
+<li>Take to account implementation</li>
+<li>Networking NATs</li>
+<li>CPU, Disk, Memory</li>
+<li>Managers and workers are going to communicate in,out and in bothd directions over TCP and UDP ports for variety of reasons</li>
+</ul>
+<h2 id="caveats">Caveats</h2>
+<h3 id="routing">Routing</h3>
+<p>Either you will have to expose the Docker applicatin/service via port redirection when you launch them OR you
+will have to provide a routing mechanism(statically) to the container network on their hos(s)</p>
+<h3 id="port-redirection">Port Redirection</h3>
+<p>As mentioned above, managing ports either through passing them directly through or redirecting them to the
+underlying host on different ports, will affect how they behave in you environment</p>
+<h3 id="portability">Portability</h3>
+<p>Making sure taht data is external to the container application (on the host via a network share) can have
+(sometimes significant) impacts on their performance</p>
+<h2 id="containers-should-be">Containers should Be..</h2>
+<h3 id="abstract">Abstract</h3>
+<p>You containerize an application so that it rematins removed from other components in the stack. That abstraction
+makes updates easier, but does introduce additional potential areas that communication can fail.</p>
+<h3 id="portable">Portable</h3>
+<p>Applications that are containerized can be picked up and pul almost anywhere and will be consistent in their content and
+behaviour. However, re-establishing communication with other components in the stack will depend on the new location
+and how you have planned acccess to that resource.</p>
+<h3 id="flexible">Flexible</h3>
+<p>Containers give you almost limiless flexibility. Be sure to try and refrain from launching you container services
+tied too closely to external(and changeable) variables (hard coded related IP addresses or hostnames) not easily
+changed</p>
+<h2 id="fault-tolerance-consideration">Fault Tolerance Consideration</h2>
+<ul>
+<li>Immediately replaces failed nodes</li>
+<li>Distribute management nodes for High Availability</li>
+<li>Monitor Health</li>
+<li>Have a Backup and Recovery Plan for the Swarm</li>
+</ul>
+<h2 id="ha-distribution-consideration">HA Distribution Consideration</h2>
+<ul>
+<li>Use a Minimum of 3 Availability Zones to Distribute Managers</li>
+<li>Run <code>Manager Only</code> Nodes</li>
+<li>Force rebalance after restart</li>
+</ul>
+
+    </body>
+    </html>

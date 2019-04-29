@@ -140,3 +140,79 @@ https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-im
 | 6  | 4 | 2 ||
 | 7  | 4 | 3 |V|
 
+## Cluster Sizing
+
+It depends... in general, sizing your environment for a Docker Swarm Cluster is going to be the same process that you
+would use for any application in you ecosystem.
+You need to be shure that you understand when and how its going to be used.
+You would need to consider things like:
+
+### CPU, Memory and Disk
+
+You containerized application will have the same requirements that it would if running on any other infrastructure (physical or virtual).
+Be sure your underlying host(s) have the necesary horsepower
+
+### Concurency
+
+What are the load requirements of the application at peak and in total? These will determine optimal placement and the amound of hardware
+resources(contraints) you need to allocate.
+
+## Recomendations
+
+- Plan for load Balancing
+- Use External Certificate Authority for Production
+- Performance considerations
+- Take to account implementation
+- Networking NATs
+- CPU, Disk, Memory
+- Managers and workers are going to communicate in,out and in bothd directions over TCP and UDP ports for variety of reasons
+
+## Caveats
+
+### Routing
+
+Either you will have to expose the Docker applicatin/service via port redirection when you launch them OR you
+will have to provide a routing mechanism(statically) to the container network on their hos(s)
+
+### Port Redirection
+
+As mentioned above, managing ports either through passing them directly through or redirecting them to the
+underlying host on different ports, will affect how they behave in you environment
+
+### Portability
+
+Making sure taht data is external to the container application (on the host via a network share) can have
+(sometimes significant) impacts on their performance
+
+## Containers should Be..
+
+### Abstract
+
+You containerize an application so that it rematins removed from other components in the stack. That abstraction
+makes updates easier, but does introduce additional potential areas that communication can fail.
+
+### Portable
+
+Applications that are containerized can be picked up and pul almost anywhere and will be consistent in their content and
+behaviour. However, re-establishing communication with other components in the stack will depend on the new location
+and how you have planned acccess to that resource.
+
+### Flexible
+
+Containers give you almost limiless flexibility. Be sure to try and refrain from launching you container services
+tied too closely to external(and changeable) variables (hard coded related IP addresses or hostnames) not easily
+changed
+
+
+## Fault Tolerance Consideration
+
+- Immediately replaces failed nodes
+- Distribute management nodes for High Availability
+- Monitor Health
+- Have a Backup and Recovery Plan for the Swarm
+
+## HA Distribution Consideration
+
+- Use a Minimum of 3 Availability Zones to Distribute Managers
+- Run `Manager Only` Nodes
+- Force rebalance after restart

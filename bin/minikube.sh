@@ -16,6 +16,7 @@ minikube config set heapster true
 minikube config set ingress true
 
 
+# 192.168.99.102
 
 # minikube config view
 # minikube set vm-driver virtualbox
